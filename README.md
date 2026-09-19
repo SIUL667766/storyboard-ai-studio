@@ -1,2 +1,1 @@
-# storyboard-ai-studio
-Storyboard AI Studio — sitio web de storyboards con generación de imágenes
+Abre `index.html` en el navegador (doble clic o un servidor estático local) para usar Storyboard AI Studio, o despliega la carpeta como sitio estático en cualquier hosting (Netlify, GitHub Pages, Render Static, etc.); no requiere backend porque genera imágenes vía pollinations.ai y guarda el proyecto en localStorage / JSON.
