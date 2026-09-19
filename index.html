@@ -10,11 +10,28 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icons/icon-192.svg">
 <link rel="icon" href="icons/icon-192.svg" type="image/svg+xml">
-<meta http-equiv="refresh" content="0; url=./app.html">
 <title>Storyboard AI Studio</title>
-<script>location.replace("./app.html");</script>
 </head>
 <body style="margin:0;background:#0e1014;color:#e8ebf2;font-family:system-ui;display:grid;place-items:center;min-height:100vh">
-  <p><a href="./app.html" style="color:#ff7a2f">Abrir Storyboard AI Studio</a></p>
+<p id="msg">Cargando Storyboard AI Studio…</p>
+<script>
+(async () => {
+  try {
+    const [ra, rb] = await Promise.all([
+      fetch("./app.a.b64", { cache: "no-cache" }),
+      fetch("./app.b.b64", { cache: "no-cache" })
+    ]);
+    if (!ra.ok || !rb.ok) throw new Error("HTTP");
+    const b64 = (await ra.text()).trim() + (await rb.text()).trim();
+    const bin = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+    if (typeof DecompressionStream === "undefined") throw new Error("Sin DecompressionStream");
+    const ds = new DecompressionStream("gzip");
+    const html = await new Response(new Blob([bin]).stream().pipeThrough(ds)).text();
+    document.open(); document.write(html); document.close();
+  } catch (err) {
+    document.getElementById("msg").textContent = "Error: " + err.message;
+  }
+})();
+</script>
 </body>
 </html>

@@ -1,21 +1,17 @@
 /* Storyboard AI Studio — service worker */
-const CACHE = "storyboard-ai-v3";
+const CACHE = "storyboard-ai-v4";
 const PRECACHE = [
   "./",
   "./index.html",
-  "./app.html",
+  "./app.a.b64",
+  "./app.b.b64",
   "./manifest.webmanifest",
   "./sw.js",
   "./icons/icon-192.svg",
   "./icons/icon-512.svg",
   "./chars/elena-avatar.svg"
 ];
-const OPTIONAL = [
-  "./icons/icon-192.png",
-  "./icons/icon-512.png",
-  "./chars/elena-avatar.jpg",
-  "./chars/elena-sheet.jpg"
-];
+const OPTIONAL = ["./app.html", "./icons/icon-192.png", "./icons/icon-512.png"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil((async () => {
@@ -67,7 +63,7 @@ self.addEventListener("fetch", (event) => {
         }
         return res;
       }).catch(() => {
-        if (req.mode === "navigate") return caches.match("./app.html") || caches.match("./index.html");
+        if (req.mode === "navigate") return caches.match("./index.html");
         return cached;
       });
     })

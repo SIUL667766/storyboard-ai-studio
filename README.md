@@ -6,9 +6,7 @@ App web (**PWA**) para crear storyboards con IA: personajes con seed fija, panel
 
 https://raw.githack.com/SIUL667766/storyboard-ai-studio/main/index.html
 
-(o directamente [app.html](https://raw.githack.com/SIUL667766/storyboard-ai-studio/main/app.html))
-
-Para PWA / service worker usa un servidor estático. Abrir por `file://` no registra el SW.
+Para PWA / service worker usa un servidor estático (raw.githack, GitHub Pages, etc.). Abrir por `file://` no registra el SW.
 
 ## Instalar como app (PWA)
 
@@ -29,10 +27,10 @@ En la primera carga (sin `localStorage` clave `storyboardAI.v1`) se crea **Elena
 
 ## Archivos PWA
 
-- `manifest.webmanifest` — nombre, iconos SVG, `theme_color`, `display: standalone`, `lang: es`
-- `sw.js` — cache-first para assets locales; red para pollinations / imágenes externas (`storyboard-ai-v3`)
+- `manifest.webmanifest` — nombre, iconos, `theme_color`, `display: standalone`, `lang: es`
+- `sw.js` — cache-first locales; red para pollinations (`storyboard-ai-v4`)
 - `icons/icon-192.svg`, `icons/icon-512.svg`
-- `app.html` — aplicación completa; `index.html` redirige aquí
+- `index.html` carga `app.a.b64` + `app.b.b64` (app gzip)
 
 ## Despliegue
 
