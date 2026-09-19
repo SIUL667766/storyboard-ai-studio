@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 192 192">
+  <rect width="192" height="192" rx="42" fill="#ff7a2f"/>
+  <rect x="48" y="42" width="96" height="28" rx="6" fill="#fff"/>
+  <polygon points="52,42 66,42 82,70 68,70" fill="#ff7a2f"/>
+  <polygon points="76,42 90,42 106,70 92,70" fill="#ff7a2f"/>
+  <polygon points="100,42 114,42 130,70 116,70" fill="#ff7a2f"/>
+  <polygon points="124,42 140,42 144,70 134,70" fill="#ff7a2f"/>
+  <rect x="48" y="78" width="96" height="58" rx="6" fill="#fff"/>
+  <text x="96" y="118" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,Segoe UI,sans-serif" font-weight="800" font-size="36" fill="#ff7a2f">SB</text>
+</svg>
