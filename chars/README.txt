@@ -1,0 +1,1 @@
+NOTE: parts 0+1 hex decode to full photo SVG; stylized chars/elena-avatar.svg is the runtime avatar.
