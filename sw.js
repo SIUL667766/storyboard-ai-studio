@@ -3,10 +3,12 @@ const CACHE = "storyboard-ai-v3";
 const PRECACHE = [
   "./",
   "./index.html",
+  "./app.html",
   "./manifest.webmanifest",
   "./sw.js",
   "./icons/icon-192.svg",
-  "./icons/icon-512.svg"
+  "./icons/icon-512.svg",
+  "./chars/elena-avatar.svg"
 ];
 const OPTIONAL = [
   "./icons/icon-192.png",
@@ -65,7 +67,7 @@ self.addEventListener("fetch", (event) => {
         }
         return res;
       }).catch(() => {
-        if (req.mode === "navigate") return caches.match("./index.html");
+        if (req.mode === "navigate") return caches.match("./app.html") || caches.match("./index.html");
         return cached;
       });
     })
