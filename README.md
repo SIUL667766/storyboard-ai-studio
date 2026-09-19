@@ -28,9 +28,9 @@ En la primera carga (sin `localStorage` clave `storyboardAI.v1`) se crea **Elena
 ## Archivos PWA
 
 - `manifest.webmanifest` — nombre, iconos, `theme_color`, `display: standalone`, `lang: es`
-- `sw.js` — cache-first para assets locales; red para pollinations / imágenes externas (`storyboard-ai-v4`)
+- `sw.js` — cache-first para assets locales; red para pollinations / imágenes externas (`storyboard-ai-v5`)
 - `icons/icon-192.svg`, `icons/icon-512.svg`
-- `index.html` loader: junta `app.0.b64`…`app.3.b64`, gunzip y ejecuta la app
+- `index.html` loader: junta `app.0`–`app.2.b64` + `app.3a/3b.hex`, gunzip y ejecuta la app
 - `chars/elena-avatar.svg` — avatar de Elena (offline)
 
 ## Despliegue

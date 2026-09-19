@@ -1,12 +1,13 @@
 /* Storyboard AI Studio — service worker */
-const CACHE = "storyboard-ai-v4";
+const CACHE = "storyboard-ai-v5";
 const PRECACHE = [
   "./",
   "./index.html",
   "./app.0.b64",
   "./app.1.b64",
   "./app.2.b64",
-  "./app.3.b64",
+  "./app.3a.hex",
+  "./app.3b.hex",
   "./manifest.webmanifest",
   "./sw.js",
   "./icons/icon-192.svg",

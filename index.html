@@ -17,12 +17,21 @@
 <script>
 (async () => {
   try {
-    const urls = ["./app.0.b64", "./app.1.b64", "./app.2.b64", "./app.3.b64"];
-    const texts = await Promise.all(urls.map(u => fetch(u, {cache:"no-cache"}).then(r => {
+    const fetchText = (u) => fetch(u, {cache:"no-cache"}).then(r => {
       if (!r.ok) throw new Error("HTTP " + r.status + " " + u);
       return r.text();
-    })));
-    const b64 = texts.map(t => t.trim()).join("");
+    });
+    const [t0, t1, t2, ha, hb] = await Promise.all([
+      fetchText("./app.0.b64"),
+      fetchText("./app.1.b64"),
+      fetchText("./app.2.b64"),
+      fetchText("./app.3a.hex"),
+      fetchText("./app.3b.hex")
+    ]);
+    const hex = (ha + hb).replace(/\s+/g, "");
+    let t3 = "";
+    for (let i = 0; i < hex.length; i += 2) t3 += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+    const b64 = [t0, t1, t2, t3].map(t => t.replace(/\s+/g, "")).join("");
     const bin = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
     if (typeof DecompressionStream === "undefined") throw new Error("Sin DecompressionStream");
     const html = await new Response(new Blob([bin]).stream().pipeThrough(new DecompressionStream("gzip"))).text();
