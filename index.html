@@ -17,16 +17,15 @@
 <script>
 (async () => {
   try {
-    const [ra, rb] = await Promise.all([
-      fetch("./app.a.b64", { cache: "no-cache" }),
-      fetch("./app.b.b64", { cache: "no-cache" })
-    ]);
-    if (!ra.ok || !rb.ok) throw new Error("HTTP");
-    const b64 = (await ra.text()).trim() + (await rb.text()).trim();
+    const urls = ["./app.0.b64", "./app.1.b64", "./app.2.b64", "./app.3.b64"];
+    const texts = await Promise.all(urls.map(u => fetch(u, {cache:"no-cache"}).then(r => {
+      if (!r.ok) throw new Error("HTTP " + r.status + " " + u);
+      return r.text();
+    })));
+    const b64 = texts.map(t => t.trim()).join("");
     const bin = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
     if (typeof DecompressionStream === "undefined") throw new Error("Sin DecompressionStream");
-    const ds = new DecompressionStream("gzip");
-    const html = await new Response(new Blob([bin]).stream().pipeThrough(ds)).text();
+    const html = await new Response(new Blob([bin]).stream().pipeThrough(new DecompressionStream("gzip"))).text();
     document.open(); document.write(html); document.close();
   } catch (err) {
     document.getElementById("msg").textContent = "Error: " + err.message;

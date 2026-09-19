@@ -3,8 +3,10 @@ const CACHE = "storyboard-ai-v4";
 const PRECACHE = [
   "./",
   "./index.html",
-  "./app.a.b64",
-  "./app.b.b64",
+  "./app.0.b64",
+  "./app.1.b64",
+  "./app.2.b64",
+  "./app.3.b64",
   "./manifest.webmanifest",
   "./sw.js",
   "./icons/icon-192.svg",
